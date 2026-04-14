@@ -29,3 +29,6 @@ Modelo conceitual escola: https://app.brmodeloweb.com/#!/publicview/69de34b6c630
 
 Modelo lógico escola: https://app.brmodeloweb.com/#!/publicview/69de34fbc630eb74498a5291
 
+---
+
+Modelo conceitual imobiliária no prórpio repósitório (feito em sala)
