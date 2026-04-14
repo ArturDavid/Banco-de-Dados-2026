@@ -25,4 +25,7 @@ Modelo lógico filme: https://app.brmodeloweb.com/#!/publicview/69de2e3ac630eb74
 
 ---
 
+Modelo conceitual escola: https://app.brmodeloweb.com/#!/publicview/69de34b6c630eb74498a5259
+
+Modelo lógico escola: https://app.brmodeloweb.com/#!/publicview/69de34fbc630eb74498a5291
 
