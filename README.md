@@ -1,5 +1,5 @@
 # BANCO DE DADOS 2026
-### Repositório dedicado as ativades de banco de dados 
+### Repositório dedicado as atividades de banco de dados 
 
 ---
 
