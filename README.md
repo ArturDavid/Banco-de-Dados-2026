@@ -1,9 +1,9 @@
-#BANCO DE DADOS 2026
-###Repositório dedicado as ativades de banco de dados 
+# BANCO DE DADOS 2026
+### Repositório dedicado as ativades de banco de dados 
 
 ---
 
-##exercícios de modelagem(BRmodelo-BRMW)
+## exercícios de modelagem(BRmodelo-BRMW)
 
 ---
 
