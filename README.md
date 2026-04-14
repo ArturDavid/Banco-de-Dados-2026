@@ -19,9 +19,9 @@ Modelo lógico hotel: https://app.brmodeloweb.com/#!/publicview/69de2847c630eb74
 
 ---
 
-Modelo conceitual escola: https://app.brmodeloweb.com/#!/publicview/69d6b1f1de33eeb5ddb5958e
+Modelo conceitual filme: https://app.brmodeloweb.com/#!/publicview/69d6b1f1de33eeb5ddb5958e
 
-Modelo lógico escola: https://app.brmodeloweb.com/#!/publicview/69de2e3ac630eb74498a4eb0
+Modelo lógico filme: https://app.brmodeloweb.com/#!/publicview/69de2e3ac630eb74498a4eb0
 
 ---
 
