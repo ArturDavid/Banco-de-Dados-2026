@@ -12,3 +12,9 @@ Modelo lógico clínica veterinária: https://app.brmodeloweb.com/#!/publicview/
 
 ---
 
+Modelo conceitual escola: https://app.brmodeloweb.com/#!/publicview/69de280ac630eb74498a48fa
+Modelo lógico escola: https://app.brmodeloweb.com/#!/publicview/69de2847c630eb74498a4929
+
+---
+
+
