@@ -1,0 +1,160 @@
+Microsoft Windows [versão 6.3.9600]
+(c) 2013 Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\ETEC>C:\xampp\mysql\bin
+'C:\xampp\mysql\bin' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+C:\Users\ETEC>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 30
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use produtos;
+ERROR 1049 (42000): Unknown database 'produtos'
+MariaDB [(none)]> use produtos;
+Database changed
+MariaDB [produtos]> describe produto;
+ERROR 1146 (42S02): Table 'produtos.produto' doesn't exist
+MariaDB [produtos]> describe produtos;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| idproduto  | int(11)       | NO   | PRI | NULL    | auto_increment |
+| produto    | varchar(200)  | NO   |     | NULL    |                |
+| preco      | decimal(10,2) | NO   |     | NULL    |                |
+| qtde       | int(11)       | NO   |     | NULL    |                |
+| datacad    | date          | NO   |     | NULL    |                |
+| ativo      | bit(1)        | NO   |     | NULL    |                |
+| idcat      | int(11)       | YES  | MUL | NULL    |                |
+| observacao | varchar(255)  | YES  |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+8 rows in set (0.076 sec)
+
+MariaDB [produtos]> alter table produto add marca varchar(100) not null;
+ERROR 1146 (42S02): Table 'produtos.produto' doesn't exist
+MariaDB [produtos]> alter table produtos add marca varchar(100) not null;
+Query OK, 0 rows affected (0.044 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> alter table produtos add marca varchar(100) not null;
+ERROR 1060 (42S21): Duplicate column name 'marca'
+MariaDB [produtos]> describe produtos;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| idproduto  | int(11)       | NO   | PRI | NULL    | auto_increment |
+| produto    | varchar(200)  | NO   |     | NULL    |                |
+| preco      | decimal(10,2) | NO   |     | NULL    |                |
+| qtde       | int(11)       | NO   |     | NULL    |                |
+| datacad    | date          | NO   |     | NULL    |                |
+| ativo      | bit(1)        | NO   |     | NULL    |                |
+| idcat      | int(11)       | YES  | MUL | NULL    |                |
+| observacao | varchar(255)  | YES  |     | NULL    |                |
+| marca      | varchar(100)  | NO   |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+9 rows in set (0.029 sec)
+
+MariaDB [produtos]> insert into produtos (produto, preco, qtde, datacad, ativo,
+idcat, observacao, marca) values
+    -> ('removedor', 30.90, 150, '2026-05-20',1,4' 'Remove até os seus mais prof
+undos arrependimentos','King Plus');
+    '>
+    '>
+    '>
+    '>
+    '>
+    '>
+    '> ;
+    '> ;;
+    '> .;
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near '' '
+Remove até os seus mais profundos arrependimentos','King Plus');
+
+
+
+
+
+
+;
+...' at line 2
+MariaDB [produtos]> ('removedor', 30.90, 150, '2026-05-20',1,4' 'Remove até os s
+eus mais profundos arrependimentos','King Plus');
+    '>
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near ''re
+movedor', 30.90, 150, '2026-05-20',1,4' 'Remove até os seus mais profundo...' at
+ line 1
+MariaDB [produtos]> ('removedor', 30.90, 150, 2026-05-20,1,4 'Remove até os seus
+ mais profundos arrependimentos','King Plus');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near ''re
+movedor', 30.90, 150, 2026-05-20,1,4 'Remove até os seus mais profundos a...' at
+ line 1
+MariaDB [produtos]> ('removedor', 30.90, 150, 2026-05-20,1,4 'Remove até os seus
+ mais profundos arrependimentos','King Plus');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near ''re
+movedor', 30.90, 150, 2026-05-20,1,4 'Remove até os seus mais profundos a...' at
+ line 1
+MariaDB [produtos]> insert into produtos (produto, preco, qtde, datacad, ativo,
+idcat, observacao, marca) values
+    -> ('removedor', 30.90, 150, '2026-05-20',1,4' 'Remove até os seus mais prof
+undos arrependimentos','King Plus');
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near '' '
+Remove até os seus mais profundos arrependimentos','King Plus');
+'' at line 2
+MariaDB [produtos]> insert into produtos (produto, preco, qtde, datacad, ativo,
+idcat, observacao, marca) values
+    -> ('removedor', 30.90, 150, 2026-05-20',1,4 'Remove até os seus mais profun
+dos arrependimentos','King Plus');
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near '',1
+,4 'Remove até os seus mais profundos arrependimentos','King Plus');
+'' at line 2
+MariaDB [produtos]> insert into produtos (produto, preco, qtde, datacad, ativo,
+idcat, observacao, marca) values
+    -> ('removedor', 30.90,150, 2026-05-20,1,4,'Remove até os seus mais profundo
+s arrependimentos','King Plus');
+Query OK, 1 row affected, 1 warning (0.018 sec)
+
+MariaDB [produtos]> insert into produtos (produto, preco, qtde, datacad, ativo,
+idcat, observacao, marca) values
+    -> ('removedor', 30.90,150, 2026-05-20,1,4,'Remove até os seus mais profundo
+s arrependimentos','King Plus');
+Query OK, 1 row affected, 1 warning (0.376 sec)
+
+MariaDB [produtos]> insert into categoria(nome) values ('eletrônicos');
+ERROR 1054 (42S22): Unknown column 'nome' in 'field list'
+MariaDB [produtos]> insert into categoria(nome) values ('eletrônicos');
+ERROR 1054 (42S22): Unknown column 'nome' in 'field list'
+MariaDB [produtos]> insert into categoria(nome) values
+    -> ('eletrônicos');
+ERROR 1054 (42S22): Unknown column 'nome' in 'field list'
+MariaDB [produtos]> ('removedor', 30.90,150, 2026-05-20,1,4,'Remove até os seus
+mais profundos arrependimentos','King Plus');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near ''re
+movedor', 30.90,150, 2026-05-20,1,4,'Remove até os seus mais profundos ar...' at
+ line 1
+MariaDB [produtos]> alter table produtos;
+Query OK, 0 rows affected (0.000 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [produtos]> add eletrônicos varchar(100);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near 'add
+ eletrônicos varchar(100)' at line 1
+MariaDB [produtos]>
