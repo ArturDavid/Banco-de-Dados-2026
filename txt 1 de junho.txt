@@ -1,0 +1,114 @@
+Microsoft Windows [versão 10.0.19043.1620]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\xampp\mysql\bin>cd
+C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin> mysql -uroot
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 48
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use produtos
+Database changed
+MariaDB [produtos]>  insert into produtos (produto,preco,qtde,datacad,ativo,observacao,marca),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [produtos]>  insert into produtos (produto,preco,qtde,datacad,ativo,observacao,marca) values;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [produtos]> insert into produtos.
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Coxinha', 9.99, 100, '2026-06-03', 1, 3, 'friboi');
+Query OK, 1 row affected, 1 warning (0.010 sec)
+
+MariaDB [produtos]>
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Bandeja de coxinha', 20.99, 100, '2026-06-07', 1, 3, 'friboi'),
+    -> ('Bife ancho',90.00 , 100, '2026-06-11', 1, 3, 'friboi');
+Query OK, 2 rows affected, 1 warning (0.011 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ]', 9.99, 100, '2026-06-03', 1, 3, 'friboi');
+    '>
+    '> ;
+    '> ,
+    '> ';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ']', 9.99, 100, '2026-06-03', 1, 3, 'friboi');
+
+;
+,
+'' at line 2
+MariaDB [produtos]> alter table categorias add column vestuário varchar (50);
+ERROR 1146 (42S02): Table 'produtos.categorias' doesn't exist
+MariaDB [produtos]> alter table categorias add column vestuário varchar (50);
+ERROR 1146 (42S02): Table 'produtos.categorias' doesn't exist
+MariaDB [produtos]> insert into categorias (categoria)
+    -> values ('Vestuário')
+    -> ;
+ERROR 1146 (42S02): Table 'produtos.categorias' doesn't exist
+MariaDB [produtos]> insert into produtos (categoria) values
+    -> ('Vestuário');
+ERROR 1054 (42S22): Unknown column 'categoria' in 'field list'
+MariaDB [produtos]> insert into produtos (categorias) values
+    -> values ('Vestuário')
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'values ('Vestuário')' at line 2
+MariaDB [produtos]> insert into categoria (idcategoria, categoria) values
+    -> (9, 'Vestuário');
+Query OK, 1 row affected (0.012 sec)
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Tênis skatista', 200.00, 100, '2026-06-06', 1, 9, 'Vans');
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Camiseta', 80.00, 150, '2026-06-03', 1, 9, 'Nike');
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Bermuda', 70.00, 200, '2026-06-03', 1, 9, 'Lacoste');
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Meia', 20.00, 300, '2026-06-03', 1, 9, 'Olimpikus');
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+MariaDB [produtos]> insert into categoria (idcategoria, categoria) values
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [produtos]> insert into categoria (idcategoria, categoria) values
+    -> ('Steam Deck' , '5000.00' , '50' , '2026-06-26' , '1' , '5' , 'Steam');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [produtos]> ('Steam Deck' , '5000.00' , '50' , '2026-06-26' , '5' , '1' , 'Steam');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''Steam Deck' , '5000.00' , '50' , '2026-06-26' , '5' , '1' , 'Steam')' at line 1
+MariaDB [produtos]> insert into categoria (idcategoria, categoria) values
+    -> ('Steam Deck','5000.00','50','2026-06-26','1','5','Steam');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [produtos]> insert into categoria (idcategoria, categoria) values
+    -> ('Steam Deck' , 5000.00 , 50 , '2026-06-26' , 5 , 1 , 'Steam');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [produtos]> insert into categoria (idcategoria, categoria) values
+    -> insert into categoria (idcategoria, categoria) values;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'insert into categoria (idcategoria, categoria) values' at line 2
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Steam Deck' , 5000.00 , 50 , '2026-06-26' , 5 , 1 , 'Steam');
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Celular' , 3500.00 , 30 , '2026-06-26' , 5 , 1 , 'Xiaomi');
+Query OK, 1 row affected, 1 warning (0.011 sec)
+
+MariaDB [produtos]> insert into produtos (produto,preco,qtde,datacad,idcat,observacao,marca) values
+    -> ('Cadeira Gamer' , 3000.00 , 50 , '2026-06-26' , 5 , 1 , 'Secretlab');
+Query OK, 1 row affected, 1 warning (0.013 sec)
+
+MariaDB [produtos]>
