@@ -1,0 +1,517 @@
+Microsoft Windows [versão 10.0.26200.8655]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 24
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database loja;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use loja;
+Database changed
+MariaDB [loja]> create table categorias (
+    -> id_categoria int primary key auto_increment,
+    -> nome_cat varchar(255)
+    -> );
+Query OK, 0 rows affected (0.033 sec)
+
+MariaDB [loja]> create table produtos (
+    -> id_produto int primary key auto_increment,
+    -> nome varchar(255),
+    -> preco decimal(10,2),
+    -> quantidade int,
+    -> marca varchar(255),
+    -> id_categoria int,
+    -> foreign key (id_categoria) references categorias(id_categoria)
+    -> );
+Query OK, 0 rows affected (0.063 sec)
+
+MariaDB [loja]> insert into categorias (nome_cat) values
+    -> ('Eletrônicos'),
+    -> ('Roupas'),
+    -> ('Laticínios');
+Query OK, 3 rows affected (0.016 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> insert into produtos (nome, preco, quantidade,marca, id_categoria) values
+    -> ('PC', 3000.00, 5, 'Pichau', 1),
+    -> ('Camiseta', 200.00, 50, 'Polo', 2);
+Query OK, 2 rows affected (0.006 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> insert into categorias (nome_cat) values
+    -> ('Açougue'),
+    -> ('Material escolar'),
+    -> ('produtos de limpeza');
+Query OK, 3 rows affected (0.022 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> insert into categorias (nome_cat) values
+    -> ('Padaria');
+Query OK, 1 row affected (0.006 sec)
+MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria) values
+    -> ('Jogo Marvel´s Wolverine', 350.00, 100, 'Insomniac', 1);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria) values
+    -> ('Ancho kg', 70.00, 40, 'Swift', 4);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria) values
+    -> ('Leite comum', 5.00, 150, 'Italac', 3),
+    -> ('Lapiseira 2.00', 10.00, 50, 'Bic', 5),
+    -> ('Pão francês KG', 25.00, 100, 'Panorama', 7),
+    -> ('Desinfetante', 11.00, 100, 'Pinho sol', 6),
+    -> ('Controle dualsense', 400.00, 50, 'Playstation', 1),
+    -> ('Caderno 15 matérias', 35.00, 20, 'Tilibra', 5),
+    -> ('Sonho', 4.00, 15, 'Bom sabor', 7),
+    -> ('Calça baggy', 120.00, 70, 'Nike', 2),
+    -> ('Removedor perfumado', 30.00, 50, 'Zulu', 6),
+    -> ('Alcatra', 45.00, 50, 'Friboi', 4),
+    -> ('Leite integral', 9.00, 100, 'Parmalat', 3),
+    -> ('Camiste Heavy Oversized', 160.00, 10, 'Berserk', 2),
+    -> ('Jogo Minecraft', 100.00, 30, 'Mojang', 1),
+    -> ('Queijo coalho', 30.00, 50, 'Quatá', 3),
+    -> ('Patinho moido KG', 40.00, 30, 'Friboi', 4);
+Query OK, 15 rows affected (0.009 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria) values
+    -> ('Mochila', 150.00, 20, 'JanSport', 5);
+Query OK, 1 row affected (0.004 sec)
+
+
+MariaDB [loja]> alter table produtos add data_validade date;
+Query OK, 0 rows affected (0.040 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '10-07-2030' where id_produto = 1;
+Query OK, 1 row affected, 1 warning (0.013 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '0000-00-00' where id_produto = 1;
+Query OK, 0 rows affected, 1 warning (0.001 sec)
+Rows matched: 1  Changed: 0  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '10-07-2030' where id_produto = 2;
+Query OK, 1 row affected, 1 warning (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '10-07-2030' where id_produto = 3;
+Query OK, 1 row affected, 1 warning (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '2026-07-18' where id_produto = 4;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '2026-07-30' where id_produto = 5;
+Query OK, 1 row affected (0.005 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '10-07-2030' where id_produto = 6;
+Query OK, 1 row affected, 1 warning (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '2026-07-08' where id_produto = 7;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '2027-07-08' where id_produto = 8;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '08-08-2026' where id_produto = 9;
+Query OK, 1 row affected, 1 warning (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '20-20-2000' where id_produto = 10;
+Query OK, 1 row affected, 1 warning (0.005 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '2026-10-07' where id_produto = 11;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '20-20-2000' where id_produto = 12;
+Query OK, 1 row affected, 1 warning (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '2027-09-10' where id_produto = 13;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '2026-07-15' where id_produto = 14;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '2026-07-20' where id_produto = 15;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '20-20-2000' where id_produto = 16;
+Query OK, 1 row affected, 1 warning (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '20-20-2000' where id_produto = 17;
+Query OK, 1 row affected, 1 warning (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> update produtos set data_validade = '2026-08-05' where id_produto = 18;
+Query OK, 1 row affected (0.006 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '2026-07-10' where id_produto = 19;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> update produtos set data_validade = '20-20-2000' where id_produto = 20;
+Query OK, 1 row affected, 1 warning (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 1
+
+MariaDB [loja]> select * from produtos;
++------------+-------------------------+---------+------------+-------------+--------------+---------------+
+| id_produto | nome                    | preco   | quantidade | marca       | id_categoria | data_validade |
++------------+-------------------------+---------+------------+-------------+--------------+---------------+
+|          1 | PC                      | 3000.00 |          5 | Pichau      |            1 | 0000-00-00    |
+|          2 | Camiseta                |  200.00 |         50 | Polo        |            2 | 0000-00-00    |
+|          3 | Jogo Marvel´s Wolverine |  350.00 |        100 | Insomniac   |            1 | 0000-00-00    |
+|          4 | Ancho kg                |   70.00 |         40 | Swift       |            4 | 2026-07-18    |
+|          5 | Leite comum             |    5.00 |        150 | Italac      |            3 | 2026-07-30    |
+|          6 | Lapiseira 2.00          |   10.00 |         50 | Bic         |            5 | 0000-00-00    |
+|          7 | Pão francês KG          |   25.00 |        100 | Panorama    |            7 | 2026-07-08    |
+|          8 | Desinfetante            |   11.00 |        100 | Pinho sol   |            6 | 2027-07-08    |
+|          9 | Controle dualsense      |  400.00 |         50 | Playstation |            1 | 0000-00-00    |
+|         10 | Caderno 15 matérias     |   35.00 |         20 | Tilibra     |            5 | 0000-00-00    |
+|         11 | Sonho                   |    4.00 |         15 | Bom sabor   |            7 | 2026-10-07    |
+|         12 | Calça baggy             |  120.00 |         70 | Nike        |            2 | 0000-00-00    |
+|         13 | Removedor perfumado     |   30.00 |         50 | Zulu        |            6 | 2027-09-10    |
+|         14 | Alcatra                 |   45.00 |         50 | Friboi      |            4 | 2026-07-15    |
+|         15 | Leite integral          |    9.00 |        100 | Parmalat    |            3 | 2026-07-20    |
+|         16 | Camiste Heavy Oversized |  160.00 |         10 | Berserk     |            2 | 0000-00-00    |
+|         17 | Jogo Minecraft          |  100.00 |         30 | Mojang      |            1 | 0000-00-00    |
+|         18 | Queijo coalho           |   30.00 |         50 | Quatá       |            3 | 2026-08-05    |
+|         19 | Patinho moido KG        |   40.00 |         30 | Friboi      |            4 | 2026-07-10    |
+|         20 | Mochila                 |  150.00 |         20 | JanSport    |            5 | 0000-00-00    |
++------------+-------------------------+---------+------------+-------------+--------------+---------------+
+20 rows in set (0.003 sec)
+
+MariaDB [loja]> select nome, preço from produtos;
+ERROR 1054 (42S22): Unknown column 'preço' in 'field list'
+MariaDB [loja]> select nome, preco from produtos;
++-------------------------+---------+
+| nome                    | preco   |
++-------------------------+---------+
+| PC                      | 3000.00 |
+| Camiseta                |  200.00 |
+| Jogo Marvel´s Wolverine |  350.00 |
+| Ancho kg                |   70.00 |
+| Leite comum             |    5.00 |
+| Lapiseira 2.00          |   10.00 |
+| Pão francês KG          |   25.00 |
+| Desinfetante            |   11.00 |
+| Controle dualsense      |  400.00 |
+| Caderno 15 matérias     |   35.00 |
+| Sonho                   |    4.00 |
+| Calça baggy             |  120.00 |
+| Removedor perfumado     |   30.00 |
+| Alcatra                 |   45.00 |
+| Leite integral          |    9.00 |
+| Camiste Heavy Oversized |  160.00 |
+| Jogo Minecraft          |  100.00 |
+| Queijo coalho           |   30.00 |
+| Patinho moido KG        |   40.00 |
+| Mochila                 |  150.00 |
++-------------------------+---------+
+20 rows in set (0.001 sec)
+
+
+MariaDB [loja]> alter table produtos change marca fabricante varchar(255);
+Query OK, 0 rows affected (0.020 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> alter table produtos change fabricante marca varchar(255);
+Query OK, 0 rows affected (0.018 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> rename table produtos to produto;
+Query OK, 0 rows affected (0.033 sec)
+
+MariaDB [loja]> update produtos set nome = 'Jogo minecraft' where nome = 'Jogo Minecraft';
+ERROR 1146 (42S02): Table 'loja.produtos' doesn't exist
+MariaDB [loja]> update produto set nome = 'Jogo minecraft' where nome = 'Jogo Minecraft';
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [loja]> delete from produtos where id_produto = 1;
+ERROR 1146 (42S02): Table 'loja.produtos' doesn't exist
+MariaDB [loja]> delete from produto where id_produto = 1;
+Query OK, 1 row affected (0.008 sec)
+
+
+MariaDB [loja]> select * from produto;
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+| id_produto | nome                    | preco  | quantidade | marca       | id_categoria | data_validade |
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+|          2 | Camiseta                | 200.00 |         50 | Polo        |            2 | 0000-00-00    |
+|          3 | Jogo Marvel´s Wolverine | 350.00 |        100 | Insomniac   |            1 | 0000-00-00    |
+|          4 | Ancho kg                |  70.00 |         40 | Swift       |            4 | 2026-07-18    |
+|          5 | Leite comum             |   5.00 |        150 | Italac      |            3 | 2026-07-30    |
+|          6 | Lapiseira 2.00          |  10.00 |         50 | Bic         |            5 | 0000-00-00    |
+|          7 | Pão francês KG          |  25.00 |        100 | Panorama    |            7 | 2026-07-08    |
+|          8 | Desinfetante            |  11.00 |        100 | Pinho sol   |            6 | 2027-07-08    |
+|          9 | Controle dualsense      | 400.00 |         50 | Playstation |            1 | 0000-00-00    |
+|         10 | Caderno 15 matérias     |  35.00 |         20 | Tilibra     |            5 | 0000-00-00    |
+|         11 | Sonho                   |   4.00 |         15 | Bom sabor   |            7 | 2026-10-07    |
+|         12 | Calça baggy             | 120.00 |         70 | Nike        |            2 | 0000-00-00    |
+|         13 | Removedor perfumado     |  30.00 |         50 | Zulu        |            6 | 2027-09-10    |
+|         14 | Alcatra                 |  45.00 |         50 | Friboi      |            4 | 2026-07-15    |
+|         15 | Leite integral          |   9.00 |        100 | Parmalat    |            3 | 2026-07-20    |
+|         16 | Camiste Heavy Oversized | 160.00 |         10 | Berserk     |            2 | 0000-00-00    |
+|         17 | Jogo minecraft          | 100.00 |         30 | Mojang      |            1 | 0000-00-00    |
+|         18 | Queijo coalho           |  30.00 |         50 | Quatá       |            3 | 2026-08-05    |
+|         19 | Patinho moido KG        |  40.00 |         30 | Friboi      |            4 | 2026-07-10    |
+|         20 | Mochila                 | 150.00 |         20 | JanSport    |            5 | 0000-00-00    |
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+19 rows in set (0.001 sec)
+
+MariaDB [loja]> select nome, preco from produto;
++-------------------------+--------+
+| nome                    | preco  |
++-------------------------+--------+
+| Camiseta                | 200.00 |
+| Jogo Marvel´s Wolverine | 350.00 |
+| Ancho kg                |  70.00 |
+| Leite comum             |   5.00 |
+| Lapiseira 2.00          |  10.00 |
+| Pão francês KG          |  25.00 |
+| Desinfetante            |  11.00 |
+| Controle dualsense      | 400.00 |
+| Caderno 15 matérias     |  35.00 |
+| Sonho                   |   4.00 |
+| Calça baggy             | 120.00 |
+| Removedor perfumado     |  30.00 |
+| Alcatra                 |  45.00 |
+| Leite integral          |   9.00 |
+| Camiste Heavy Oversized | 160.00 |
+| Jogo minecraft          | 100.00 |
+| Queijo coalho           |  30.00 |
+| Patinho moido KG        |  40.00 |
+| Mochila                 | 150.00 |
++-------------------------+--------+
+19 rows in set (0.001 sec)
+
+MariaDB [loja]> select * from produto where preco > 20;
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+| id_produto | nome                    | preco  | quantidade | marca       | id_categoria | data_validade |
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+|          2 | Camiseta                | 200.00 |         50 | Polo        |            2 | 0000-00-00    |
+|          3 | Jogo Marvel´s Wolverine | 350.00 |        100 | Insomniac   |            1 | 0000-00-00    |
+|          4 | Ancho kg                |  70.00 |         40 | Swift       |            4 | 2026-07-18    |
+|          7 | Pão francês KG          |  25.00 |        100 | Panorama    |            7 | 2026-07-08    |
+|          9 | Controle dualsense      | 400.00 |         50 | Playstation |            1 | 0000-00-00    |
+|         10 | Caderno 15 matérias     |  35.00 |         20 | Tilibra     |            5 | 0000-00-00    |
+|         12 | Calça baggy             | 120.00 |         70 | Nike        |            2 | 0000-00-00    |
+|         13 | Removedor perfumado     |  30.00 |         50 | Zulu        |            6 | 2027-09-10    |
+|         14 | Alcatra                 |  45.00 |         50 | Friboi      |            4 | 2026-07-15    |
+|         16 | Camiste Heavy Oversized | 160.00 |         10 | Berserk     |            2 | 0000-00-00    |
+|         17 | Jogo minecraft          | 100.00 |         30 | Mojang      |            1 | 0000-00-00    |
+|         18 | Queijo coalho           |  30.00 |         50 | Quatá       |            3 | 2026-08-05    |
+|         19 | Patinho moido KG        |  40.00 |         30 | Friboi      |            4 | 2026-07-10    |
+|         20 | Mochila                 | 150.00 |         20 | JanSport    |            5 | 0000-00-00    |
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+14 rows in set (0.005 sec)
+
+MariaDB [loja]> select * from produtos where marca = 'Mojang';
+ERROR 1146 (42S02): Table 'loja.produtos' doesn't exist
+MariaDB [loja]> select * from produto where marca = 'Mojang';
++------------+----------------+--------+------------+--------+--------------+---------------+
+| id_produto | nome           | preco  | quantidade | marca  | id_categoria | data_validade |
++------------+----------------+--------+------------+--------+--------------+---------------+
+|         17 | Jogo minecraft | 100.00 |         30 | Mojang |            1 | 0000-00-00    |
++------------+----------------+--------+------------+--------+--------------+---------------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]> select * from produtos where quantidade <=60;
+ERROR 1146 (42S02): Table 'loja.produtos' doesn't exist
+MariaDB [loja]> select * from produto where quantidade <=60;
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+| id_produto | nome                    | preco  | quantidade | marca       | id_categoria | data_validade |
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+|          2 | Camiseta                | 200.00 |         50 | Polo        |            2 | 0000-00-00    |
+|          4 | Ancho kg                |  70.00 |         40 | Swift       |            4 | 2026-07-18    |
+|          6 | Lapiseira 2.00          |  10.00 |         50 | Bic         |            5 | 0000-00-00    |
+|          9 | Controle dualsense      | 400.00 |         50 | Playstation |            1 | 0000-00-00    |
+|         10 | Caderno 15 matérias     |  35.00 |         20 | Tilibra     |            5 | 0000-00-00    |
+|         11 | Sonho                   |   4.00 |         15 | Bom sabor   |            7 | 2026-10-07    |
+|         13 | Removedor perfumado     |  30.00 |         50 | Zulu        |            6 | 2027-09-10    |
+|         14 | Alcatra                 |  45.00 |         50 | Friboi      |            4 | 2026-07-15    |
+|         16 | Camiste Heavy Oversized | 160.00 |         10 | Berserk     |            2 | 0000-00-00    |
+|         17 | Jogo minecraft          | 100.00 |         30 | Mojang      |            1 | 0000-00-00    |
+|         18 | Queijo coalho           |  30.00 |         50 | Quatá       |            3 | 2026-08-05    |
+|         19 | Patinho moido KG        |  40.00 |         30 | Friboi      |            4 | 2026-07-10    |
+|         20 | Mochila                 | 150.00 |         20 | JanSport    |            5 | 0000-00-00    |
++------------+-------------------------+--------+------------+-------------+--------------+---------------+
+13 rows in set (0.001 sec)
+
+MariaDB [loja]> select nome, preco from produto order by preco asc limit 5;
++----------------+-------+
+| nome           | preco |
++----------------+-------+
+| Sonho          |  4.00 |
+| Leite comum    |  5.00 |
+| Leite integral |  9.00 |
+| Lapiseira 2.00 | 10.00 |
+| Desinfetante   | 11.00 |
++----------------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [loja]> select nome, preco from produto order by preco desc limit 5;
++-------------------------+--------+
+| nome                    | preco  |
++-------------------------+--------+
+| Controle dualsense      | 400.00 |
+| Jogo Marvel´s Wolverine | 350.00 |
+| Camiseta                | 200.00 |
+| Camiste Heavy Oversized | 160.00 |
+| Mochila                 | 150.00 |
++-------------------------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [loja]> select count(*) as total_produto from produto;
++---------------+
+| total_produto |
++---------------+
+|            19 |
++---------------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]> select avg(preco) as preco_medio from produto;
++-------------+
+| preco_medio |
++-------------+
+|   94.421053 |
++-------------+
+1 row in set (0.002 sec)
+
+MariaDB [loja]> select nome, quantidade from produto order by quantidade desc limit 1;
++-------------+------------+
+| nome        | quantidade |
++-------------+------------+
+| Leite comum |        150 |
++-------------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]> select p.nome, c.nome_cat
+    -> from produto p
+    -> join categorias c on p.id_categoria = c.id_categoria;
++-------------------------+---------------------+
+| nome                    | nome_cat            |
++-------------------------+---------------------+
+| Jogo Marvel´s Wolverine | Eletrônicos         |
+| Controle dualsense      | Eletrônicos         |
+| Jogo minecraft          | Eletrônicos         |
+| Camiseta                | Roupas              |
+| Calça baggy             | Roupas              |
+| Camiste Heavy Oversized | Roupas              |
+| Leite comum             | Laticínios          |
+| Leite integral          | Laticínios          |
+| Queijo coalho           | Laticínios          |
+| Ancho kg                | Açougue             |
+| Alcatra                 | Açougue             |
+| Patinho moido KG        | Açougue             |
+| Lapiseira 2.00          | Material escolar    |
+| Caderno 15 matérias     | Material escolar    |
+| Mochila                 | Material escolar    |
+| Desinfetante            | produtos de limpeza |
+| Removedor perfumado     | produtos de limpeza |
+| Pão francês KG          | Padaria             |
+| Sonho                   | Padaria             |
++-------------------------+---------------------+
+19 rows in set (0.018 sec)
+
+MariaDB [loja]> select p.nome, p.marca, p.preco
+    -> from produto p
+    -> join categorias c on p.id_categoria = c.id_categoria
+    -> where c.nome_cat = 'Padaria';
++----------------+-----------+-------+
+| nome           | marca     | preco |
++----------------+-----------+-------+
+| Pão francês KG | Panorama  | 25.00 |
+| Sonho          | Bom sabor |  4.00 |
++----------------+-----------+-------+
+2 rows in set (0.005 sec)
+
+MariaDB [loja]> select c.nome_cat, count(*) as total_produtos
+    -> from produto p
+    -> join categorias c on p.id_categoria = c.id_categoria
+    -> group by c.nome_cat;
++---------------------+----------------+
+| nome_cat            | total_produtos |
++---------------------+----------------+
+| Açougue             |              3 |
+| Eletrônicos         |              3 |
+| Laticínios          |              3 |
+| Material escolar    |              3 |
+| Padaria             |              2 |
+| produtos de limpeza |              2 |
+| Roupas              |              3 |
++---------------------+----------------+
+7 rows in set (0.010 sec)
+
+MariaDB [loja]> select * from produto
+    -> where preco between 10.00 and 20.00;
++------------+----------------+-------+------------+-----------+--------------+---------------+
+| id_produto | nome           | preco | quantidade | marca     | id_categoria | data_validade |
++------------+----------------+-------+------------+-----------+--------------+---------------+
+|          6 | Lapiseira 2.00 | 10.00 |         50 | Bic       |            5 | 0000-00-00    |
+|          8 | Desinfetante   | 11.00 |        100 | Pinho sol |            6 | 2027-07-08    |
++------------+----------------+-------+------------+-----------+--------------+---------------+
+2 rows in set (0.004 sec)
+
+MariaDB [loja]> select * from produto
+    -> where nome like 'p%';
++------------+------------------+-------+------------+----------+--------------+---------------+
+| id_produto | nome             | preco | quantidade | marca    | id_categoria | data_validade |
++------------+------------------+-------+------------+----------+--------------+---------------+
+|          7 | Pão francês KG   | 25.00 |        100 | Panorama |            7 | 2026-07-08    |
+|         19 | Patinho moido KG | 40.00 |         30 | Friboi   |            4 | 2026-07-10    |
++------------+------------------+-------+------------+----------+--------------+---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [loja]> select distinct marca from produto;
++-------------+
+| marca       |
++-------------+
+| Polo        |
+| Insomniac   |
+| Swift       |
+| Italac      |
+| Bic         |
+| Panorama    |
+| Pinho sol   |
+| Playstation |
+| Tilibra     |
+| Bom sabor   |
+| Nike        |
+| Zulu        |
+| Friboi      |
+| Parmalat    |
+| Berserk     |
+| Mojang      |
+| Quatá       |
+| JanSport    |
++-------------+
+18 rows in set (0.001 sec)
+
+MariaDB [loja]>
+
+
+
+
